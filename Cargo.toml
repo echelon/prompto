@@ -1,0 +1,18 @@
+[package]
+  name = "prompto"
+  version = "0.0.1"
+  authors = [ "Brandon Thomas <bt@brand.io>", "Brandon Thomas <echelon@gmail.com>" ]
+  description = "A small webapp to generate Prompto selfies"
+  keywords = [ "Prompto", "selfie", "Final", "Fantasy", "FFXV" ]
+  license = "BSD-4-Clause"
+  readme = "README.md"
+  repository = "https://github.com/echelon/prompto"
+
+[[bin]]
+  name = "prompto"
+
+[dependencies]
+  image = "0.10.*"
+  iron = "0.4.*"
+  lazy_static = "0.2.*"
+
