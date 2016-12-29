@@ -6,9 +6,15 @@ Prompto is a character from Final Fantasy XV.
 
 License
 -------
+Prompto, Final Fantasy, and associated media and trademarks are property
+of SQUARE ENIX CO., LTD.
+
+Library code is Copyright Brandon Thomas and is available under the BSD
+4-clause license as follows.
+
 **BSD 4-clause**
 
-Copyright (c) 2015-2016, Brandon Thomas. All rights reserved.
+Copyright (c) 2016 Brandon Thomas. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -42,4 +48,3 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-

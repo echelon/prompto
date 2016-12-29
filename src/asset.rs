@@ -1,4 +1,9 @@
-use error::PromptoError;
+// Library Copyright 2016 Brandon Thomas <bt@brand.io>, <echelon@gmail.com>
+// Prompto, Final Fantasy, and associated images and media are property of and
+// copyrighted by SQUARE ENIX CO., LTD.
+
+//! Prompto image assets.
+
 use image::DynamicImage;
 use image::ImageFormat;
 use image::load_from_memory_with_format;
@@ -44,6 +49,8 @@ lazy_static! {
     .unwrap();
 }
 
+// TODO TEST
+// TODO DOC
 pub fn prompto_for_box(width: u32, height: u32) -> &'static DynamicImage {
   if width < 400 || height < 400 {
     &PROMPTO_IMAGE_200
