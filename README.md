@@ -1,5 +1,6 @@
 prompto
 =======
+[![Crate Version](https://img.shields.io/crates/v/prompto.svg)](https://crates.io/crates/prompto)
 [![Build Status](https://travis-ci.org/echelon/prompto.svg?branch=master)](https://travis-ci.org/echelon/prompto)
 
 A small library written in Rust to generate Prompto selfies.
