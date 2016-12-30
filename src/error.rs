@@ -10,12 +10,18 @@ use std::io;
 /// Library errors.
 #[derive(Debug)]
 pub enum PromptoError {
+  /// Failure to process an image.
+  ImageError {
+    /// Source of the error.
+    cause: ImageError,
+  },
   /// Failure to load an image.
-  IoError { cause: io::Error },
+  IoError {
+    /// Source of the error.
+    cause: io::Error,
+  },
   /// Problem encountered when adding the image mask.
   MaskingError,
-  /// Uncategorized error
-  MiscError,
   /// Image is not an RGB image with an alpha channel.
   NotRgba,
 }
@@ -24,7 +30,7 @@ impl From<ImageError> for PromptoError {
   fn from(error: ImageError) -> Self {
     match error {
       ImageError::IoError(cause) => PromptoError::IoError { cause: cause },
-      _ => PromptoError::MiscError,
+      _ => PromptoError::ImageError { cause: error },
     }
   }
 }

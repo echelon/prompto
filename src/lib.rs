@@ -3,7 +3,11 @@
 // copyrighted by SQUARE ENIX CO., LTD.
 
 //! A frivolous joke of a library that turns your ordinary images into selfies
-//! with Final Fantasy XV's Prompto.
+//! featuring Final Fantasy XV's Prompto.
+
+#![warn(missing_docs)]
+#![warn(unused_extern_crates)]
+#![warn(unused_qualifications)]
 
 #[macro_use] extern crate lazy_static;
 extern crate image;
