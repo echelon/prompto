@@ -1,8 +1,14 @@
 prompto
 =======
-A small webapp written in Rust to generate Prompto selfies.
+[![Build Status](https://travis-ci.org/echelon/prompto.svg?branch=master)](https://travis-ci.org/echelon/prompto)
+
+A small library written in Rust to generate Prompto selfies.
+
+![Before](http://i.imgur.com/I2T6eUB.jpg) ![After](http://i.imgur.com/x8q5oGG.jpg)
 
 Prompto is a character from Final Fantasy XV.
+
+[Documentation](https://docs.rs/prompto/) hosted by *docs.rs*.
 
 License
 -------
