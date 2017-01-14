@@ -1,6 +1,6 @@
 [package]
   name = "prompto"
-  version = "0.0.1"
+  version = "0.0.2"
   authors = [ "Brandon Thomas <bt@brand.io>", "Brandon Thomas <echelon@gmail.com>" ]
   description = "Frivolous image processing library that generates Prompto selfies."
   keywords = [ "Prompto", "selfie", "Final", "Fantasy", "FFXV" ]
