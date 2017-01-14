@@ -9,6 +9,7 @@ use error::PromptoError;
 use image::DynamicImage;
 use image::FilterType;
 use image::GenericImage;
+use image::load_from_memory;
 use image;
 use std::cmp::max;
 use std::path::Path;
@@ -29,6 +30,16 @@ pub fn selfie_from_image(image: &DynamicImage)
   let mut source = DynamicImage::ImageRgba8(source);
   let _r = add_selfie_to_image(&mut source)?;
   Ok(source)
+}
+
+/// Add Prompto to the image byte buffer.
+pub fn selfie_from_memory(buffer: &[u8])
+                          -> Result<DynamicImage, PromptoError> {
+  let image = load_from_memory(buffer)?;
+  let mut image = to_rgba(image);
+
+  let _r = add_selfie_to_image(&mut image)?;
+  Ok(image)
 }
 
 /// Add Prompto to the image buffer.
@@ -93,6 +104,16 @@ fn mask(source: &mut DynamicImage, other: &DynamicImage, x: u32, y:u32)
   Ok(())
 }
 
+/// Convert an image buffer into RGBA if it isn't already rgba.
+fn to_rgba(image: DynamicImage) -> DynamicImage {
+  match image {
+    DynamicImage::ImageRgba8(_) => image, // No need to modify channels
+    DynamicImage::ImageLuma8(_) => DynamicImage::ImageRgba8(image.to_rgba()),
+    DynamicImage::ImageLumaA8(_) => DynamicImage::ImageRgba8(image.to_rgba()),
+    DynamicImage::ImageRgb8(_) => DynamicImage::ImageRgba8(image.to_rgba()),
+  }
+}
+
 #[cfg(test)]
 mod tests {
   extern crate tempfile;
@@ -152,6 +173,33 @@ mod tests {
   }
 
   #[test]
+  fn test_selfie_from_memory_png() {
+    let bytes = create_image_bytes(75, 75, ImageFormat::PNG);
+    let selfie = selfie_from_memory(&bytes).unwrap();
+
+    assert_eq!(75, selfie.width());
+    assert_eq!(75, selfie.height());
+  }
+
+  #[test]
+  fn test_selfie_from_memory_jpeg() {
+    let bytes = create_image_bytes(175, 175, ImageFormat::JPEG);
+    let selfie = selfie_from_memory(&bytes).unwrap();
+
+    assert_eq!(175, selfie.width());
+    assert_eq!(175, selfie.height());
+  }
+
+  #[test]
+  fn test_selfie_from_memory_gif() {
+    let bytes = create_image_bytes(100, 100, ImageFormat::GIF);
+    let selfie = selfie_from_memory(&bytes).unwrap();
+
+    assert_eq!(100, selfie.width());
+    assert_eq!(100, selfie.height());
+  }
+
+  #[test]
   fn test_add_selfie_to_image() {
     // NB: Only tests that the function doesn't error.
     let mut image = DynamicImage::ImageRgba8(ImageBuffer::new(250, 250));
@@ -197,6 +245,14 @@ mod tests {
     });
 
     DynamicImage::ImageRgb8(img)
+  }
+
+  fn create_image_bytes(width: u32, height: u32, format: ImageFormat)
+      -> Vec<u8> {
+    let image = create_image(width, height);
+    let mut buf = Vec::new();
+    let _ = image.save(&mut buf, format).unwrap();
+    buf
   }
 
   // Create a temporary image file for use in tests.

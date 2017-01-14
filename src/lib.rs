@@ -20,3 +20,7 @@ pub use error::PromptoError;
 pub use selfie::add_selfie_to_image;
 pub use selfie::selfie_from_file;
 pub use selfie::selfie_from_image;
+pub use selfie::selfie_from_memory;
+
+// Re-exports
+pub use image::ImageFormat;
