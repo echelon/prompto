@@ -1,9 +1,10 @@
 [package]
   name = "prompto"
-  version = "0.0.2"
+  version = "0.0.3"
   authors = [ "Brandon Thomas <bt@brand.io>", "Brandon Thomas <echelon@gmail.com>" ]
   description = "Frivolous image processing library that generates Prompto selfies."
   keywords = [ "Prompto", "selfie", "Final", "Fantasy", "FFXV" ]
+  categories = [ "multimedia::images" ]
   license = "BSD-4-Clause"
   readme = "README.md"
   repository = "https://github.com/echelon/prompto"
